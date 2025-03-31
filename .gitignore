@@ -48,3 +48,6 @@ src
 *.prof
 
 MUJOCO_LOG.TXT
+
+# Miscellaneous sample files
+dqn_lunar.zip
