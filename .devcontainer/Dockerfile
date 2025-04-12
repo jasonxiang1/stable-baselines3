@@ -19,8 +19,9 @@ RUN apt-get update && apt-get install ffmpeg libsm6 libxext6  -y
 RUN pip install torch torchvision torchaudio
 ADD setup.py .
 RUN pip install .
-RUN pip uninstall opencv-python
-RUN pip install opencv-python-headless
+RUN pip install opencv-python
+# RUN pip uninstall opencv-python
+# RUN pip install opencv-python-headless
 # install lunarlander dependencies
 RUN pip install swig
 RUN pip install gymnasium[box2d]

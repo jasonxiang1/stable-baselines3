@@ -5,12 +5,12 @@ from stable_baselines3.common.evaluation import evaluate_policy
 
 
 # Create environment
-env = gym.make("LunarLander-v3", render_mode="rgb_array")
+env = gym.make("LunarLander-v3", render_mode="human")
 
 # Instantiate the agent
 model = DQN("MlpPolicy", env, verbose=1)
 # Train the agent and display a progress bar
-model.learn(total_timesteps=int(2e4), progress_bar=True)
+model.learn(total_timesteps=int(2e3), progress_bar=True)
 # Save the agent
 model.save("dqn_lunar")
 del model  # delete trained model to demonstrate loading
