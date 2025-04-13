@@ -1,11 +1,21 @@
+"""
+Example script to train and evaluate a DQN agent on the LunarLander-v3 environment.
+
+This script demonstrates the basic usage of the stable-baselines3 library
+for training a Deep Q-Network (DQN) agent on the LunarLander-v3 environment
+from Gymnasium. It includes steps for environment creation, agent instantiation,
+training, saving and loading the trained agent, evaluation, and visualization
+of the agent's performance.
+"""
 import gymnasium as gym
 
 from stable_baselines3 import DQN
 from stable_baselines3.common.evaluation import evaluate_policy
 
+import matplotlib.pyplot as plt
 
 # Create environment
-env = gym.make("LunarLander-v3", render_mode="human")
+env = gym.make("LunarLander-v3", render_mode="rgb_array")
 
 # Instantiate the agent
 model = DQN("MlpPolicy", env, verbose=1)
@@ -33,4 +43,5 @@ obs = vec_env.reset()
 for i in range(1000):
     action, _states = model.predict(obs, deterministic=True)
     obs, rewards, dones, info = vec_env.step(action)
-    vec_env.render("human")
+    plt.imshow(vec_env.render("rgb_array"))
+    plt.savefig('test.png')
