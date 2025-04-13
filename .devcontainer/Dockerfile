@@ -14,11 +14,16 @@ RUN pip install --upgrade pip
 
 RUN pip install torch torchvision torchaudio
 ADD setup.py .
-RUN pip install . tqdm rich debugpy
+RUN pip install . tqdm rich debugpy swig
 RUN pip install opencv-python
+
+# Install headless opencv-python is encountering errors with
+# opencv-python library
 # RUN pip uninstall opencv-python
 # RUN pip install opencv-python-headless
-# install lunarlander dependencies
-RUN pip install swig
+
+# Install gymnasium-based dependencies
+# To run lunarlander env
 RUN pip install gymnasium[box2d]
+# To run humanoid env
 RUN pip install gymnasium[mujoco]
